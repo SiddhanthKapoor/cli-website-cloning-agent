@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scaler — Become the Professional Built for the Next Decade in AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #1A3FAA; --blue-dark: #0F2878; --cyan: #3BBFED;
+      --navy: #0D1B4B; --white: #FFFFFF; --light-bg: #F4F6FB;
+      --text-dark: #0D1B3E; --text-mid: #3A4468; --text-muted: #6B7694;
+      --border: #E2E8F0; --sticky-bar: #0F1F5C;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Inter',-apple-system,sans-serif; background:#fff; color:var(--text-dark); overflow-x:hidden; }
+    a { text-decoration:none; color:inherit; }
+    button { cursor:pointer; font-family:inherit; }
+
+    /* HEADER */
+    header { position:sticky; top:0; z-index:200; height:60px; background:#fff; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:0 40px; }
+    .logo-wrap { display:flex; align-items:center; gap:8px; }
+    .logo-text { font-size:22px; font-weight:900; color:var(--text-dark); letter-spacing:-0.5px; }
+    .logo-icon { width:28px; height:28px; background:var(--blue); border-radius:5px; display:flex; align-items:center; justify-content:center; }
+    nav { display:flex; align-items:center; gap:4px; }
+    .nav-item { padding:8px 13px; color:var(--text-mid); font-size:14px; font-weight:500; border-radius:4px; transition:color .15s; position:relative; }
+    .nav-item:hover { color:var(--text-dark); }
+    .nav-item.active { color:var(--blue); }
+    .nav-item.active::after { content:''; position:absolute; bottom:-18px; left:0; right:0; height:2px; background:var(--blue); }
+    .header-right { display:flex; align-items:center; gap:12px; }
+    .btn-login { background:transparent; color:var(--text-dark); border:1.5px solid #C8D0E0; padding:8px 20px; border-radius:4px; font-size:14px; font-weight:500; transition:border-color .2s; }
+    .btn-login:hover { border-color:var(--blue); color:var(--blue); }
+    .btn-placement { background:var(--blue); color:#fff; border:none; padding:10px 20px; border-radius:4px; font-size:13px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; }
+    .btn-placement:hover { background:var(--blue-dark); }
+
+    /* HERO */
+    .hero { min-height:calc(100vh - 60px); background:linear-gradient(160deg,#EEF2FF 0%,#F7F9FF 40%,#EDF3FF 100%); position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:80px 40px 80px; }
+    .hero::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(100,130,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(100,130,255,.06) 1px,transparent 1px); background-size:60px 60px; }
+    .hero-lines { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+    .hero-lines svg { position:absolute; inset:0; width:100%; height:100%; opacity:.18; }
+    .hero-marquee-label { display:flex; align-items:center; gap:10px; color:var(--blue); font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:28px; position:relative; }
+    .hero-marquee-label span { opacity:.5; }
+    .hero h1 { font-size:68px; font-weight:900; line-height:1.05; color:var(--text-dark); letter-spacing:-2px; max-width:900px; margin-bottom:0; position:relative; }
+    .highlight-box { display:inline-block; background:rgba(100,130,255,.12); border-radius:6px; padding:0 8px; }
+    .gradient-line { background:linear-gradient(90deg,#1A3FAA 0%,#3BBFED 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; display:block; margin-top:4px; }
+    .hero-sub { margin-top:28px; color:var(--text-muted); font-size:17px; line-height:1.6; max-width:640px; position:relative; }
+    .hero-programs-label { margin-top:36px; color:var(--text-muted); font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; position:relative; }
+    .hero-programs-strip { display:flex; align-items:center; margin-top:14px; position:relative; border:1px solid var(--border); border-radius:4px; overflow:hidden; background:rgba(255,255,255,.7); }
+    .prog-item { padding:11px 28px; font-size:13px; font-weight:500; color:var(--text-mid); border-right:1px solid var(--border); white-space:nowrap; }
+    .prog-item:last-child { border-right:none; }
+    .hero-ctas { display:flex; gap:16px; margin-top:36px; position:relative; }
+    .btn-callback { background:var(--blue); color:#fff; border:none; padding:16px 36px; border-radius:4px; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; transition:all .2s; }
+    .btn-callback:hover { background:var(--blue-dark); transform:translateY(-1px); }
+    .btn-free-class { background:transparent; color:var(--text-dark); border:1.5px solid #C8D0E0; padding:16px 36px; border-radius:4px; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; transition:all .2s; }
+    .btn-free-class:hover { border-color:var(--blue); color:var(--blue); }
+
+    /* STICKY BAR */
+    .sticky-bar { position:fixed; bottom:0; left:0; right:0; z-index:300; background:var(--sticky-bar); height:50px; display:flex; align-items:center; justify-content:center; gap:8px; font-size:14px; color:rgba(255,255,255,.85); }
+    .sticky-bar strong { color:#fff; font-weight:700; }
+    .sticky-bar a { color:#fff; font-weight:600; text-decoration:underline; }
+
+    /* WHY SCALER */
+    .why-section { background:linear-gradient(180deg,#0A1540 0%,#0D1F6B 50%,#1535A8 100%); padding:80px 80px 0; }
+    .section-eyebrow { font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:16px; }
+    .why-section h2 { font-size:42px; font-weight:800; color:#fff; letter-spacing:-1px; margin-bottom:10px; max-width:500px; }
+    .why-section .sub { color:rgba(255,255,255,.55); font-size:16px; margin-bottom:52px; }
+    .why-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .why-card { background:#fff; border-radius:10px; padding:28px 24px; display:flex; flex-direction:column; gap:16px; min-height:280px; }
+    .why-icon { width:44px; height:44px; display:flex; align-items:center; justify-content:center; }
+    .why-card h3 { font-size:17px; font-weight:700; color:var(--text-dark); line-height:1.3; }
+    .why-card p { font-size:14px; color:var(--text-muted); line-height:1.65; flex:1; }
+    .companies-strip { background:rgba(255,255,255,.06); padding:20px 0; display:flex; align-items:center; overflow:hidden; margin-top:48px; }
+    .companies-label { white-space:nowrap; padding:0 32px; font-size:13px; color:rgba(255,255,255,.45); flex-shrink:0; }
+    .companies-logos { display:flex; align-items:center; gap:40px; animation:marquee 20s linear infinite; flex-shrink:0; }
+    .companies-logos span { font-size:16px; font-weight:700; color:rgba(255,255,255,.6); white-space:nowrap; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* PROGRAM */
+    .program-section { background:#fff; padding:80px; }
+    .program-section .section-eyebrow { color:var(--text-muted); }
+    .program-section h2 { font-size:40px; font-weight:800; margin-bottom:10px; letter-spacing:-1px; }
+    .program-section .sub { color:var(--text-muted); font-size:16px; margin-bottom:40px; }
+    .program-tabs { display:flex; border:1px solid var(--border); border-radius:4px; overflow:hidden; margin-bottom:32px; background:var(--light-bg); }
+    .prog-tab { flex:1; padding:18px 20px; text-align:center; border-right:1px solid var(--border); cursor:pointer; transition:background .15s; }
+    .prog-tab:last-child { border-right:none; }
+    .prog-tab.active { background:#fff; border-bottom:3px solid var(--blue); }
+    .prog-tab .tab-title { font-size:15px; font-weight:700; color:var(--text-dark); }
+    .prog-tab .tab-sub { font-size:12px; color:var(--text-muted); margin-top:3px; }
+    .program-layout { display:flex; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+    .program-sidebar { width:280px; flex-shrink:0; border-right:1px solid var(--border); }
+    .prog-sidebar-item { padding:20px 24px; border-bottom:1px solid var(--border); cursor:pointer; font-size:15px; color:var(--text-muted); transition:all .15s; }
+    .prog-sidebar-item.active { background:#fff; color:var(--text-dark); font-weight:700; border-left:3px solid var(--blue); }
+    .prog-sidebar-item:hover:not(.active) { background:#F7F9FF; color:var(--text-dark); }
+    .program-detail { flex:1; background:linear-gradient(135deg,#0D1F6B 0%,#1535A8 100%); padding:40px 48px; color:#fff; }
+    .detail-eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,.5); text-transform:uppercase; margin-bottom:20px; }
+    .detail-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:32px; }
+    .detail-title { font-size:36px; font-weight:800; line-height:1.15; letter-spacing:-.5px; max-width:500px; }
+    .detail-stats { display:flex; align-items:center; gap:24px; flex-shrink:0; }
+    .detail-stat { text-align:center; }
+    .detail-stat .num { font-size:36px; font-weight:800; }
+    .detail-stat .lbl { font-size:12px; color:rgba(255,255,255,.6); }
+    .stat-divider { width:1px; height:50px; background:rgba(255,255,255,.2); }
+    .detail-divider { height:1px; background:rgba(255,255,255,.12); margin-bottom:28px; }
+    .detail-what-label { font-size:11px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,.5); text-transform:uppercase; margin-bottom:20px; }
+    .detail-list { display:flex; flex-direction:column; gap:18px; }
+    .detail-item { display:flex; gap:16px; }
+    .detail-num { font-size:13px; font-weight:700; color:rgba(255,255,255,.4); flex-shrink:0; min-width:24px; }
+    .detail-item p { font-size:14px; line-height:1.6; color:rgba(255,255,255,.85); }
+    .detail-item p strong { color:#fff; }
+
+    /* STORIES */
+    .stories-section { background:#fff; padding:80px; }
+    .stories-section .section-eyebrow { color:var(--text-muted); }
+    .stories-section h2 { font-size:40px; font-weight:800; margin-bottom:10px; letter-spacing:-1px; max-width:700px; }
+    .stories-section .sub { color:var(--text-muted); font-size:16px; margin-bottom:40px; }
+    .stories-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+    .story-card { border:1px solid var(--border); border-radius:10px; padding:28px; display:flex; flex-direction:column; gap:14px; }
+    .hike-num { font-size:48px; font-weight:900; color:var(--text-dark); }
+    .hike-num span { font-size:24px; font-weight:500; color:var(--text-muted); }
+    .story-divider { height:1px; background:var(--border); }
+    .story-name { font-size:17px; font-weight:700; }
+    .story-role { font-size:13px; color:var(--text-muted); }
+    .story-ba-row { font-size:13px; }
+    .story-ba-row .label { font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-muted); display:block; }
+    .story-offers-row { display:flex; align-items:center; justify-content:space-between; margin-top:8px; }
+    .offers-badge { border:1px solid var(--border); border-radius:4px; padding:6px 14px; font-size:13px; font-weight:600; color:var(--text-dark); }
+    .explore-link { color:var(--blue); font-size:14px; font-weight:600; }
+    .story-testimonial { background:#fff; border:1px solid var(--border); border-radius:10px; padding:24px; font-size:14px; color:var(--text-mid); line-height:1.7; font-style:italic; }
+    .stars { color:#F5A623; font-size:18px; margin-top:12px; display:block; }
+    .story-name-small { font-size:15px; font-weight:700; margin-top:10px; color:var(--text-dark); font-style:normal; }
+    .video-card { border-radius:10px; overflow:hidden; position:relative; background:#111; }
+    .video-thumb { width:100%; height:200px; display:flex; align-items:center; justify-content:center; }
+    .play-btn { width:52px; height:52px; background:rgba(255,255,255,.9); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; color:var(--blue); }
+    .video-info { padding:16px; background:#fff; border:1px solid var(--border); border-top:none; border-radius:0 0 10px 10px; }
+    .video-name { font-size:15px; font-weight:700; }
+    .video-role { font-size:13px; color:var(--text-muted); }
+
+    /* FOOTER */
+    footer { background:#fff; border-top:1px solid var(--border); padding:64px 80px 32px; }
+    .footer-top { display:grid; grid-template-columns:2fr 1.5fr 1fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+    .footer-logo { display:flex; align-items:center; gap:8px; margin-bottom:16px; }
+    .footer-logo-text { font-size:22px; font-weight:900; color:var(--text-dark); }
+    .footer-address { font-size:13px; color:var(--text-muted); line-height:1.8; margin-bottom:16px; }
+    .footer-col h4 { font-size:14px; font-weight:700; color:var(--blue); margin-bottom:16px; }
+    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .footer-col ul li a { font-size:14px; color:var(--text-mid); transition:color .15s; }
+    .footer-col ul li a:hover { color:var(--blue); }
+    .footer-divider { height:1px; background:var(--border); margin-bottom:24px; }
+    .footer-trending { margin-bottom:24px; }
+    .footer-trending h4 { font-size:14px; font-weight:700; color:var(--blue); margin-bottom:10px; }
+    .footer-trending p { font-size:13px; color:var(--text-mid); line-height:1.8; }
+    .footer-trending p a { color:var(--text-mid); }
+    .footer-trending p a:hover { color:var(--blue); text-decoration:underline; }
+    .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:20px; border-top:1px solid var(--border); font-size:13px; color:var(--text-muted); }
+    .footer-hashtag { font-size:120px; font-weight:900; color:rgba(0,0,0,.04); text-align:center; letter-spacing:-4px; line-height:1; overflow:hidden; height:80px; margin-top:40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-wrap">
+      <div class="logo-text">SCALER</div>
+      <div class="logo-icon">
+        <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+          <rect x="2" y="2" width="7" height="7" rx="1.5" fill="white"/>
+          <rect x="11" y="2" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/>
+          <rect x="2" y="11" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/>
+          <rect x="11" y="11" width="7" height="7" rx="1.5" fill="white" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+    <nav>
+      <a class="nav-item" href="#why">WHY SCALER</a>
+      <a class="nav-item active" href="#program">PROGRAM</a>
+      <a class="nav-item" href="#stories">STORIES</a>
+      <a class="nav-item" href="#">PEOPLE BEHIND SCALER</a>
+      <a class="nav-item" href="#">PODCAST</a>
+      <a class="nav-item" href="#">PLACEMENT REPORT</a>
+    </nav>
+    <div class="header-right">
+      <button class="btn-login">Login</button>
+      <button class="btn-placement">PLACEMENT REPORT</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-lines">
+      <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
+        <line x1="200" y1="0" x2="600" y2="800" stroke="#3B6FE8" stroke-width="1"/>
+        <line x1="400" y1="0" x2="900" y2="800" stroke="#3B6FE8" stroke-width="1"/>
+        <line x1="700" y1="0" x2="200" y2="800" stroke="#3B6FE8" stroke-width="1"/>
+        <line x1="1000" y1="0" x2="500" y2="800" stroke="#3B6FE8" stroke-width="1"/>
+        <line x1="1200" y1="0" x2="700" y2="800" stroke="#3B6FE8" stroke-width="1"/>
+        <line x1="0" y1="200" x2="1400" y2="400" stroke="#3B6FE8" stroke-width="0.8"/>
+        <line x1="0" y1="500" x2="1400" y2="200" stroke="#3B6FE8" stroke-width="0.8"/>
+      </svg>
+    </div>
+    <div class="hero-marquee-label"><span>&#8249;</span> THE MARKET HAS ALREADY CHANGED <span>&#8250;</span></div>
+    <h1>Become the Professional<br/><span class="highlight-box">Built</span> for the <span class="gradient-line">Next Decade in AI.</span></h1>
+    <p class="hero-sub">The investment that compounds.<br/>Strong technical foundations, AI integrated at every stage, and a curriculum that evolves as the market does</p>
+    <p class="hero-programs-label">PROGRAMS</p>
+    <div class="hero-programs-strip">
+      <div class="prog-item">Modern Data Science and ML with Specialisation in AI</div>
+      <div class="prog-item">Advanced AIML with Agentic AI</div>
+      <div class="prog-item">DevOps, Cloud &amp; AI Platform Engineering</div>
+    </div>
+    <div class="hero-ctas">
+      <button class="btn-callback">REQUEST A CALLBACK</button>
+      <button class="btn-free-class">BOOK FREE LIVE CLASS</button>
+    </div>
+  </section>
+
+  <section class="why-section" id="why">
+    <p class="section-eyebrow">WHY SCALER</p>
+    <h2>Built Different,<br/>Designed to Last</h2>
+    <p class="sub">Four things no other program gives you</p>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 36 36" fill="none" stroke="#1A3FAA" stroke-width="1.8" width="36" height="36"><path d="M18 4 L32 12 L32 24 L18 32 L4 24 L4 12 Z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="18" r="3" fill="#1A3FAA" stroke="none"/></svg></div>
+        <h3>AI-Integrated Curriculum</h3>
+        <p>Every phase is structured around how the best technical teams work today, with AI embedded in how problems are framed, built, and shipped. Updated quarterly.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 36 36" fill="none" stroke="#1A3FAA" stroke-width="1.8" width="36" height="36"><path d="M18 4 L32 12 L32 24 L18 32 L4 24 L4 12 Z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="18" r="3" fill="#1A3FAA" stroke="none"/></svg></div>
+        <h3>AI Powered Platform</h3>
+        <p>AI-assisted coding woven into every lab, assignment, and DSA problem with a 24x7 AI Companion that hints, critiques, and pair-programs alongside you.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 36 36" fill="none" stroke="#1A3FAA" stroke-width="1.8" width="36" height="36"><path d="M18 4 L32 12 L32 24 L18 32 L4 24 L4 12 Z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="18" r="3" fill="#1A3FAA" stroke="none"/></svg></div>
+        <h3>Lifelong Learning Access</h3>
+        <p>The curriculum moves as the market does. Your knowledge shifts with it at no extra cost. You're buying a living system. Built to last.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><svg viewBox="0 0 36 36" fill="none" stroke="#1A3FAA" stroke-width="1.8" width="36" height="36"><path d="M18 4 L32 12 L32 24 L18 32 L4 24 L4 12 Z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="18" r="3" fill="#1A3FAA" stroke="none"/></svg></div>
+        <h3>Strong Foundations</h3>
+        <p>DSA. System design. Engineering judgment. AI makes those fundamentals hit harder. Depth that doesn't expire.</p>
+      </div>
+    </div>
+    <div class="companies-strip">
+      <div class="companies-label">AI-first curriculum built by 100+ engineers from</div>
+      <div class="companies-logos">
+        <span>amazon</span><span>OpenAI</span><span>Meta</span><span>Adobe</span><span>Google DeepMind</span><span>Microsoft</span>
+        <span>amazon</span><span>OpenAI</span><span>Meta</span><span>Adobe</span><span>Google DeepMind</span><span>Microsoft</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="program-section" id="program">
+    <p class="section-eyebrow">PROGRAM</p>
+    <h2>Find the AI Path for your role</h2>
+    <p class="sub">Instructors, mentors, and leaders from industry who shape what you learn and how you grow.</p>
+    <div class="program-tabs">
+      <div class="prog-tab active"><div class="tab-title">Academy</div><div class="tab-sub">Online Courses for Professionals</div></div>
+      <div class="prog-tab"><div class="tab-title">Techvarsity</div><div class="tab-sub">PGP Programs</div></div>
+      <div class="prog-tab"><div class="tab-title">Edge</div><div class="tab-sub">Partner Programs</div></div>
+      <div class="prog-tab"><div class="tab-title">Offline</div><div class="tab-sub">On Campus Program</div></div>
+    </div>
+    <div class="program-layout">
+      <div class="program-sidebar">
+        <div class="prog-sidebar-item active">AI Software Engineer</div>
+        <div class="prog-sidebar-item">AI Data Scientist &amp; ML</div>
+        <div class="prog-sidebar-item">DevOps, Cloud &amp; AI Platform ...</div>
+        <div class="prog-sidebar-item">Advanced AI &amp; ML</div>
+      </div>
+      <div class="program-detail">
+        <p class="detail-eyebrow">FOR ENGINEERS BUILDING APPS &amp; SYSTEMS</p>
+        <div class="detail-header">
+          <div class="detail-title">Modern Software &amp; AI<br/>Engineering</div>
+          <div class="detail-stats">
+            <div class="detail-stat"><div style="color:#F5C842;font-size:20px">&#127942;</div><div class="num">4.8+</div><div class="lbl">(25K+ Ratings)</div></div>
+            <div class="stat-divider"></div>
+            <div class="detail-stat"><div class="num">12</div><div class="lbl">Months</div></div>
+          </div>
+        </div>
+        <div class="detail-divider"></div>
+        <p class="detail-what-label">WHAT YOU'LL BUILD</p>
+        <div class="detail-list">
+          <div class="detail-item"><span class="detail-num">01</span><p><strong>Strong engineering fundamentals —</strong> DSA, system design, and backend architecture built to the depth product company interviews demand.</p></div>
+          <div class="detail-item"><span class="detail-num">02</span><p><strong>AI woven into every lab, assignment, and DSA problem —</strong> with a 24x7 AI Companion that hints, critiques your approach, and pair-programs alongside you.</p></div>
+          <div class="detail-item"><span class="detail-num">03</span><p><strong>Specialisation in Generative AI</strong> — build, evaluate, and ship production AI systems as part of the programme.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stories-section" id="stories">
+    <p class="section-eyebrow">STORIES</p>
+    <h2>Real AI-era career moves, not generic success stories.</h2>
+    <p class="sub">Numbers tell part of the story. These are the role shifts behind them.</p>
+    <div class="stories-grid">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="story-card">
+          <div class="hike-num">214% <span>Hike</span></div>
+          <div class="story-divider"></div>
+          <div class="story-name">Shivam Prakash</div>
+          <div class="story-role">Computer Scientist, Adobe</div>
+          <div class="story-ba-row"><span class="label">BEFORE:</span> Backend Engineer, Ericsson</div>
+          <div class="story-ba-row"><span class="label">NOW:</span> Computer Scientist, Adobe</div>
+          <div class="story-offers-row"><div class="offers-badge">3 OFFERS</div><a class="explore-link" href="#">Explore more &#8594;</a></div>
+        </div>
+        <div class="story-testimonial">"This journey has been an incredible blend of theoretical knowledge and hands-on experience, equipping me with the skills to tackle real-world challenges in the dynamic field of AI and ML."<span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><div class="story-name-small">Sahil Bansal</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="video-card">
+          <div class="video-thumb" style="background:linear-gradient(135deg,#1a2a6c 0%,#b21f1f 60%,#fdbb2d 100%)"><div class="play-btn">&#9654;</div></div>
+          <div class="video-info"><div class="video-name">Arun M V</div><div class="video-role">Applied Scientist, GoKwik</div></div>
+        </div>
+        <div class="story-card">
+          <div class="hike-num">250% <span>Hike</span></div>
+          <div class="story-divider"></div>
+          <div class="story-name">Divyanshu Tanter</div>
+          <div class="story-role">AI Researcher, Dassault Systems</div>
+          <div class="story-ba-row"><span class="label">BEFORE:</span> Data Scientist, Wipro Limited</div>
+          <div class="story-ba-row"><span class="label">NOW:</span> AI Researcher, Dassault Systems</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="video-card">
+          <div class="video-thumb" style="background:linear-gradient(135deg,#7B4F12 0%,#C88B1A 100%);justify-content:space-between;padding:16px"><div style="color:#fff;font-weight:800;font-size:15px">DSML WEEKLY<br/>CATCH-UP</div><div class="play-btn">&#9654;</div></div>
+          <div class="video-info"><div class="video-name">Madhuri Kukreja</div><div class="video-role">Associate Analyst, Razorpay</div></div>
+        </div>
+        <div class="story-card">
+          <div class="hike-num">142% <span>Hike</span></div>
+          <div class="story-divider"></div>
+          <div class="story-name">Sayyam Bhandari</div>
+          <div class="story-role">Data Engineer, Amazon</div>
+          <div class="story-ba-row"><span class="label">BEFORE:</span> Data Analyst, Infosys</div>
+          <div class="story-ba-row"><span class="label">NOW:</span> Data Engineer, Amazon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-text">SCALER</div>
+          <div class="logo-icon"><svg viewBox="0 0 20 20" fill="none" width="18" height="18"><rect x="2" y="2" width="7" height="7" rx="1.5" fill="white"/><rect x="11" y="2" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/><rect x="2" y="11" width="7" height="7" rx="1.5" fill="white" opacity="0.6"/><rect x="11" y="11" width="7" height="7" rx="1.5" fill="white" opacity="0.3"/></svg></div>
+        </div>
+        <div class="footer-address">Interviewbit Software Services Private Limited<br/>5th Floor, Surya Park II 14, 3rd cross, Parappana Agrahar<br/>Electronic City Rd, Electronics City Phase 1<br/>Bengaluru, Karnataka 560100</div>
+      </div>
+      <div class="footer-col"><h4>Explore Scaler</h4><ul><li><a href="#">Modern Software and AI Engineering</a></li><li><a href="#">Modern Data Science and ML with Specialisation in AI</a></li><li><a href="#">DevOps, Cloud &amp; AI Platform Engineering</a></li><li><a href="#">Advanced AI &amp; Machine Learning with Agentic AI</a></li><li><a href="#">Masters in Software Development</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Alumni Reviews</a></li><li><a href="#">Blogs</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Careers</a></li></ul></div>
+      <div class="footer-col"><h4>Others</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Become a Mentor</a></li><li><a href="#">Hire From Us</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+      <div class="footer-col"><h4>Socials</h4><ul><li><a href="#">&#9654; Youtube</a></li><li><a href="#">in LinkedIn</a></li><li><a href="#">f Facebook</a></li><li><a href="#">&#128247; Instagram</a></li><li><a href="#">&#120143; Twitter</a></li><li><a href="#">Q Quora</a></li></ul></div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-trending"><h4>Trending Courses</h4><p><a href="#">Modern Data Science and ML with Specialisation in AI</a> | <a href="#">DevOps, Cloud &amp; AI Platform Engineering</a> | <a href="#">Full Stack Developer Course</a> | <a href="#">Machine Learning Course</a> | <a href="#">Data Structures and Algorithms (DSA) Course</a> | <a href="#">System Design Course</a></p></div>
+    <div class="footer-trending"><h4>Tutorial</h4><p><a href="#">Data Structure Tutorial</a> | <a href="#">Python Tutorial</a> | <a href="#">Java Tutorial</a> | <a href="#">JavaScript Tutorial</a> | <a href="#">C++ Tutorial</a> | <a href="#">CSS Tutorial</a> | <a href="#">HTML Tutorial</a></p></div>
+    <div class="footer-trending"><h4>Career Advice Resources</h4><p><a href="#">Software Development</a> | <a href="#">Data Science</a> | <a href="#">Machine Learning</a> | <a href="#">DevOps</a></p></div>
+    <div class="footer-hashtag">#Greatestjob</div>
+    <div class="footer-bottom"><span>&#169; 2024 Scaler Academy. All rights reserved.</span><span>Privacy Policy &middot; Terms of Service</span></div>
+  </footer>
+
+  <div class="sticky-bar">Need help? Talk to us at &nbsp;<strong>08047939623</strong>&nbsp; or &nbsp;<a href="#">Request a Call</a>&nbsp;&#8599;</div>
+
+  <script>
+    document.body.style.paddingBottom = '50px';
+    document.querySelectorAll('.prog-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.prog-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    document.querySelectorAll('.prog-sidebar-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.prog-sidebar-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
